@@ -1,5 +1,5 @@
-﻿@page "/"
-@namespace BindingToExpandoObject.Pages
+﻿@using Microsoft.AspNetCore.Components.Web
+@namespace EditorImportExport.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <!DOCTYPE html>
@@ -7,15 +7,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BindingToExpandoObject</title>
     <base href="~/" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link href="_content/Telerik.UI.for.Blazor/css/kendo-theme-default/all.css" rel="stylesheet" />
     <link href="css/site.css" rel="stylesheet" />
-    <link rel="stylesheet" href="_content/Telerik.UI.for.Blazor/css/kendo-theme-default/all.css" />
-    <script src="_content/Telerik.UI.for.Blazor/js/telerik-blazor.js" defer></script>
+    <link href="EditorImportExport.styles.css" rel="stylesheet" />
+    <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
 </head>
 <body>
-    <app><component type="typeof(App)" render-mode="ServerPrerendered" /></app>
+    @RenderBody()
 
     <div id="blazor-error-ui">
         <environment include="Staging,Production">
@@ -24,10 +24,17 @@
         <environment include="Development">
             An unhandled exception has occurred. See browser dev tools for details.
         </environment>
-        <a href class="reload">Reload</a>
+        <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
 
-    <script src="_framework/blazor.server.js"></script>
+    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script src="_content/Telerik.UI.for.Blazor/js/telerik-blazor.js"></script>
+    <script src="js/fileDownloader.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            Blazor.start();
+        });
+    </script>
 </body>
 </html>
